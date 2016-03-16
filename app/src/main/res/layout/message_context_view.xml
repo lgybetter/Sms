@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/title_bar"
+        android:background="#292929"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/retrun"
+            android:id="@+id/bt_return"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:layout_weight="1"
+            android:textColor="#56abe4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="短信空间"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:visibility="invisible"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/title_bar"
+        android:id="@+id/listView"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/message_context"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:divider="@color/white">
+        </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/addfunction"
+            android:layout_height="40dp"
+            android:layout_width="40dp" />
+        <EditText
+            android:layout_gravity="center_vertical"
+            android:id="@+id/et_write_message"
+            android:hint="写信息："
+            android:gravity="center_vertical"
+            android:textColorHint="#56abe4"
+            android:textSize="18sp"
+            android:inputType="text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <Button
+            android:layout_gravity="center_vertical"
+            android:id="@+id/bt_send_message"
+            android:background="@drawable/sendmessage"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+</RelativeLayout>

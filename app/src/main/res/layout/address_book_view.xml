@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:paddingTop="5dp"
+    android:background="#B5CBC8C9"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@drawable/search_background"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            />
+        <EditText
+            android:singleLine="true"
+            android:textSize="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@null"
+            />
+    </LinearLayout>
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+            </TabWidget>
+
+            <!-- 视觉上,用单选按钮替代TabWidget -->
+            <RadioGroup
+                android:id="@+id/book_select"
+                android:layout_width="fill_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/address_book"
+                    android:background="@drawable/tab_shape"
+                    android:textColor="@color/tab_text2"
+                    android:checked="true"
+                    android:text="常用联系人"
+                    style="@style/tab_button_contact"
+                    />
+
+                <RadioButton
+                    android:id="@+id/defined_group"
+                    android:background="@drawable/tab_shape"
+                    android:textColor="@color/tab_text2"
+                    android:text="自定义群组"
+                    style="@style/tab_button_contact"
+                    />
+            </RadioGroup>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+</LinearLayout>

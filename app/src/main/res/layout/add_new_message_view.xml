@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#B5CBC8C9"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="#292929"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/retrun"
+            android:id="@+id/bt_return"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:layout_weight="1"
+            android:textColor="#56abe4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="短信助手"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:visibility="invisible"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_add_contacts"
+            android:textSize="18sp"
+            android:hint="接收人"
+            android:textColorHint="#56abe4"
+            android:singleLine="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Button
+            android:background="@drawable/addcontact"
+            android:id="@+id/bt_add_contacts"
+            android:layout_gravity="center_vertical"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/choose_template"
+        android:background="#56abe4"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:text="选择模版"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_margin="4dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="3dp"
+            android:background="@color/white"
+            android:id="@+id/template_layout"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_margin="3dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_template_1"
+                    android:text="尊敬的"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:textSize="15sp"
+                    android:text="陈主任:"
+                    android:id="@+id/et_template_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:textSize="15sp"
+                    android:text="你好,"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_template_3"/>
+                <EditText
+                    android:textSize="15sp"
+                    android:text="你好,"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_template_4"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="3dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <EditText
+                    android:textSize="15sp"
+                    android:text="你好,"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_template_5"/>
+                <TextView
+                    android:textSize="13sp"
+                    android:hint="请在底部输入框中输入要发送的内容"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="3dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:textSize="15sp"
+                    android:text="收到请回复,谢谢!"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/addfunction"
+                android:layout_height="40dp"
+                android:layout_width="40dp" />
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:id="@+id/et_write_message"
+                android:hint="写信息："
+                android:gravity="center_vertical"
+                android:textColorHint="#56abe4"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <Button
+                android:layout_gravity="center_vertical"
+                android:id="@+id/bt_send_message"
+                android:background="@drawable/sendmessage"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>
