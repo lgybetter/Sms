@@ -33,10 +33,9 @@
     <style name="tab_button_bg">        
         <item name="android:textAppearance">@style/tab_text_color</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:button">@null</item>
-        <item name="android:layout_weight">1</item>
     </style>
 
     <style name="tab_button_contact">

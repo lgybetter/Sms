@@ -21,8 +21,6 @@
         </activity>
         <activity android:name=".activity.SmsMailActivity" >
         </activity>
-        <activity android:name=".activity.SmsSettingActivity" >
-        </activity>
         <activity
             android:name=".activity.SmsFrequentContactAcctivity"
             android:label="@string/title_activity_sms_frequent_contact_acctivity" >

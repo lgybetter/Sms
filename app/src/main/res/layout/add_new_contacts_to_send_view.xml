@@ -9,10 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <Button
+            android:layout_marginLeft="10dp"
             android:background="@drawable/cancle"
             android:id="@+id/bt_no_select"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
         <TextView
             android:layout_weight="1"
             android:textColor="#56abe4"
@@ -22,11 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp" />
         <Button
+            android:layout_marginRight="10dp"
             android:background="@drawable/commit"
             android:id="@+id/bt_yes_select"
             android:gravity="center"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
     </LinearLayout>
     
     <ListView

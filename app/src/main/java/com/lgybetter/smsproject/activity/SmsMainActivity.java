@@ -30,7 +30,6 @@ public class SmsMainActivity extends TabActivity {
         tab_message = (RadioButton)findViewById(R.id.tab_messsage);
         tab_address_book = (RadioButton)findViewById(R.id.tab_address_book);
         tab_mail = (RadioButton)findViewById(R.id.tab_mail);
-        tab_settring = (RadioButton)findViewById(R.id.tab_setting);
         add_sms =  (Button)findViewById(R.id.add_sms);
 
         //向TabWidget添加Tab
@@ -38,7 +37,6 @@ public class SmsMainActivity extends TabActivity {
         tabhost.addTab(tabhost.newTabSpec("tag1").setIndicator("0").setContent(new Intent(this,SmsMessageActivity.class)));
         tabhost.addTab(tabhost.newTabSpec("tag2").setIndicator("1").setContent(new Intent(this,SmsAddressBookActivity.class)));
         tabhost.addTab(tabhost.newTabSpec("tag3").setIndicator("2").setContent(new Intent(this, SmsMailActivity.class)));
-        tabhost.addTab(tabhost.newTabSpec("tag4").setIndicator("3").setContent(new Intent(this, SmsSettingActivity.class)));
 
         //设置监听事件
         main_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -56,9 +54,6 @@ public class SmsMainActivity extends TabActivity {
                         break;
                     case R.id.tab_mail:
                         tabhost.setCurrentTab(2);
-                        break;
-                    case R.id.tab_setting:
-                        tabhost.setCurrentTab(3);
                         break;
                 }
             }

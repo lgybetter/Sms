@@ -33,24 +33,21 @@
             <!-- 视觉上,用单选按钮替代TabWidget -->
             <RadioGroup
                 android:id="@+id/main_radiogroup"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:gravity="center"
                 android:background="#FFFFFF"
-                android:orientation="horizontal"
-                android:layout_weight="0.00">
+                android:orientation="horizontal">
                 <RadioButton
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:id="@+id/tab_messsage"
                     android:checked="true"
+                    android:layout_marginRight="70dp"
                     android:textColor="@color/tab_text"
                     android:background="@drawable/tab_message"
                     style="@style/tab_button_bg"
                     />
 
                 <RadioButton
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
                     android:id="@+id/tab_address_book"
                     android:textColor="@color/tab_text"
                     android:background="@drawable/tab_adress_book"
@@ -59,21 +56,10 @@
 
 
                 <RadioButton
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="70dp"
                     android:id="@+id/tab_mail"
                     android:textColor="@color/tab_text"
                     android:background="@drawable/tab_mail"
-                    style="@style/tab_button_bg"
-                    />
-
-
-                <RadioButton
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/tab_setting"
-                    android:textColor="@color/tab_text"
-                    android:background="@drawable/tab_setting"
                     style="@style/tab_button_bg"
                     />
             </RadioGroup>
