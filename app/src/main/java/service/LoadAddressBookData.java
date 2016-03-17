@@ -43,7 +43,7 @@ public class LoadAddressBookData extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         db.execSQL("create table if not exists persontb(_id integer primary key autoincrement,contactId integer not null,displayName text not null,phoneNum text not null,sortKey text not null)");
         Uri uri = Phone.CONTENT_URI;
         String[] projection = { Phone._ID, Phone.DISPLAY_NAME, Phone.DATA1, "sort_key", Phone.PHOTO_ID };

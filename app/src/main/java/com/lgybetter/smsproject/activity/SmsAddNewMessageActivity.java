@@ -86,7 +86,7 @@ public class SmsAddNewMessageActivity extends Activity {
                 }
                 else
                 {
-                    final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
                     String message_text = et_WriteMessage.getText().toString();
                     SmsManager smsManager = SmsManager.getDefault();
                     String[] name_array = name.split(";");

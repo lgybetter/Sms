@@ -40,6 +40,6 @@ public class Application_FirstRunActivity extends Activity {
                 Application_FirstRunActivity.this.startActivity(activity);
                 Application_FirstRunActivity.this.finish();
             }
-        }, 800);
+        }, 400);
     }
 }

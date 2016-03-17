@@ -43,7 +43,7 @@ public class CreatMessageGroupDataBase extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         db.execSQL("create table if not exists contract_group_tb(_id integer primary key autoincrement)");
     }
     @Override

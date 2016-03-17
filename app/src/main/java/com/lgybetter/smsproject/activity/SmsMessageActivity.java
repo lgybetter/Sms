@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -29,11 +31,14 @@ public class SmsMessageActivity extends Activity {
     private List<Message> messagesList = new ArrayList<>();
     private SimpleAdapter simpleAdapter;
     private List<Map<String , Object>> listItems;
+    private Button addSms;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.sms_view);
+        addSms = (Button)findViewById(R.id.add_sms);
         ListView listView = (ListView) findViewById(R.id.listView);
         listItems = new ArrayList<>();
         simpleAdapter = new SimpleAdapter(this,getData(),R.layout.message_item,new String[]{"name","phonenumber","body","date"} , new int[]{R.id.name , R.id.number , R.id.body , R.id.date});
@@ -41,18 +46,25 @@ public class SmsMessageActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SmsMessageActivity.this,SmsMessageContextActivity.class);
+                Intent intent = new Intent(SmsMessageActivity.this, SmsMessageContextActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("message_data",messagesList.get(position));
+                bundle.putSerializable("message_data", messagesList.get(position));
                 intent.putExtras(bundle);
                 startActivityForResult(intent, 100);
+            }
+        });
+        addSms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext() , SmsAddNewMessageActivity.class);
+                startActivity(intent);
             }
         });
     }
     public List<Map<String,Object>> getData()
     {
         Map<String , Object> m;
-        final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         Cursor cursor = db.query("messagetb", null, "_id>?", new String[]{"0"}, null, null, "date desc");
         if (cursor.moveToFirst())
         {

@@ -66,7 +66,7 @@ public class AddNewContactsToSendActivity extends Activity {
         number_return = "";
         id_return = "";
         adapter = new SelectContactsAdapter(AddNewContactsToSendActivity.this,R.layout.add_new_contacts_item,contacts);
-        final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         Cursor cursor = db.query("persontb", null, "_id>?", new String[]{"0"}, null, null, "_id");
         if (cursor.moveToFirst())
         {

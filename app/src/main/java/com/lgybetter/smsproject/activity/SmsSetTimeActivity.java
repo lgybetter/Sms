@@ -2,6 +2,7 @@ package com.lgybetter.smsproject.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Window;
 
 import com.lgybetter.smsproject.R;
 
@@ -13,6 +14,7 @@ public class SmsSetTimeActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.add_new_message_view);
     }
 }

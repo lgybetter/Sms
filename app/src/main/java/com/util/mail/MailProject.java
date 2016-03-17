@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.sun.mail.pop3.POP3Folder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,10 +16,12 @@ import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.MimeMessage;
 
+import beanclass.MailUser;
+
 /**
  * Created by ttopi_000 on 2016/3/1.
  */
-public class MailProject {
+public class MailProject implements Serializable {
     Context context;
     OnListFlashListener listFlashListener;
 
@@ -48,12 +51,13 @@ public class MailProject {
 
     public boolean sendMail(String toAddress ,String subject, String text){
         MailDBHelper mdh=new MailDBHelper(this.context);
-        MailDBHelper.user u=mdh.getUser();
-        if(u==null) return false;
+        MailUser u=mdh.getUser();
+        if(u==null)
+            return false;
         class sendMailThread extends Thread{
             String toAddress , subject,  text;
-            MailDBHelper.user u;
-            public  sendMailThread(String toAddress ,String subject, String text, MailDBHelper.user u){
+            MailUser u;
+            public  sendMailThread(String toAddress ,String subject, String text, MailUser u){
                 this.toAddress=toAddress;
                 this.subject=subject;
                 this.text=text;
@@ -89,21 +93,22 @@ public class MailProject {
 
     public List<Email> search(String keyword){
         MailDBHelper mdh=new MailDBHelper(this.context);
-        MailDBHelper.user u=mdh.getUser();
+        MailUser u=mdh.getUser();
         if(u==null) return null;
         return mdh.searchEmail(keyword);
     }
 
     public List<Email> getList() {
         MailDBHelper mdh=new MailDBHelper(this.context);
-        MailDBHelper.user u=mdh.getUser();
-        if(u==null) return null;
+        MailUser u=mdh.getUser();
+        if(u==null)
+            return null;
         class getListThread extends Thread {
             OnListFlashListener lfl;
-            MailDBHelper.user u;
+            MailUser u;
             MailDBHelper mdh;
 
-            public getListThread(OnListFlashListener lfl, MailDBHelper mdh, MailDBHelper.user u) {
+            public getListThread(OnListFlashListener lfl, MailDBHelper mdh, MailUser u) {
                 this.lfl = lfl;
                 this.mdh=mdh;
                 this.u = u;

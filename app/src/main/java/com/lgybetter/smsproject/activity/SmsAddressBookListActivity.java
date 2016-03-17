@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AlphabetIndexer;
 import android.widget.ListView;
@@ -54,10 +55,11 @@ public class SmsAddressBookListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.address_book_list_view);
         adapter = new PersonAdapter(this, R.layout.contact_item, contacts);
         contactsListView = (ListView) findViewById(R.id.contacts_list_view);
-        final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         Cursor cursor = db.query("persontb", null, "_id>?", new String[]{"0"}, null, null, "_id");
         if (cursor.moveToFirst())
         {

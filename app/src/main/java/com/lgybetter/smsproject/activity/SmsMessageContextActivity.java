@@ -55,7 +55,7 @@ public class SmsMessageContextActivity extends Activity {
         Bundle bundle = intent.getExtras();
         final Message message = (Message)bundle.getSerializable("message_data");
         assert message != null;
-        final SQLiteDatabase db = openOrCreateDatabase("user.db", MODE_PRIVATE, null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db", MODE_PRIVATE, null);
         Cursor cursor = db.query("messagetb", null, "person_phoneNum=?", new String[]{message.getPerson_number()}, null, null, "date desc");
         if(cursor.moveToFirst())
         {
@@ -89,7 +89,7 @@ public class SmsMessageContextActivity extends Activity {
                 if (TextUtils.isEmpty(WritteSms.getText())) {
                     Toast.makeText(SmsMessageContextActivity.this, "请输入发送的号码", Toast.LENGTH_SHORT).show();
                 } else {
-                    final SQLiteDatabase db = openOrCreateDatabase("user.db", MODE_PRIVATE, null);
+                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db", MODE_PRIVATE, null);
                     String message_text = WritteSms.getText().toString();
                     SmsManager smsManager = SmsManager.getDefault();
 //                    smsManager.sendTextMessage(message.getPerson_number(), null,message_text, null, null);

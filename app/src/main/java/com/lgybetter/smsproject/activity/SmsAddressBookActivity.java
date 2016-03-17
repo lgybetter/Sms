@@ -3,6 +3,7 @@ package com.lgybetter.smsproject.activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
@@ -20,6 +21,7 @@ public class SmsAddressBookActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.address_book_view);
         book_select = (RadioGroup)findViewById(R.id.book_select);
         address_book = (RadioButton)findViewById(R.id.address_book);

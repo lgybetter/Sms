@@ -47,7 +47,7 @@ public class LoadMessageData extends Service{
     public void onCreate()
     {
         super.onCreate();
-        final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+        final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         db.execSQL("create table if not exists messagetb(_id integer primary key autoincrement,person_name text not null,contact_Id integer not null,message_id integer not null,message_body text not null,person_phoneNum text not null,date text not null,type integer not null,read integer not null)");
         Uri uri = Uri.parse(SMS_URI_ALL);
         String[] projection = new String[] { "_id", "address", "person", "body", "date", "type" ,"read"};

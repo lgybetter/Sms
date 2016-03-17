@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class SmsEditAddressBookActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.edit_address_book_view);
         et_name = (EditText)findViewById(R.id.et_name);
         et_number = (EditText)findViewById(R.id.et_number);
@@ -48,7 +50,7 @@ public class SmsEditAddressBookActivity extends Activity {
                 }
                 else {
                     Log.i("info","成功修改");
-//                    final SQLiteDatabase db = openOrCreateDatabase("user.db",MODE_PRIVATE,null);
+//                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
 //                    String name = et_name.getText().toString();
 //                    String[] pinyin = PinyinHelper.toHanyuPinyinStringArray('刘');
                 }
