@@ -103,13 +103,9 @@ public class SmsAddNewMessageActivity extends Activity {
                         contentValues1.put("body",text);
                         getContentResolver().insert(Uri.parse("content://sms"),contentValues1);
                         contentValues.put("person_phoneNum", number_array[i]);
-                        Log.i("info", number_array[i]);
                         contentValues.put("person_name", name_array[i]);
-                        Log.i("info", name_array[i]);
-                        Log.i("info", String.valueOf(System.currentTimeMillis()));
                         contentValues.put("date", String.valueOf(System.currentTimeMillis()));
                         contentValues.put("message_body", text);
-                        Log.i("info", text);
                         contentValues.put("type", 2);
                         contentValues.put("read", 1);
                         contentValues.put("contact_Id",0);
@@ -170,10 +166,5 @@ public class SmsAddNewMessageActivity extends Activity {
 
     public void setTemplateReturn(Intent data) {
         TemplatePosition templateposition = (TemplatePosition)data.getSerializableExtra("template_result");
-        if(templateposition != null)
-        {
-            Log.i("info", String.valueOf(templateposition.groupPosition));
-            Log.i("info", String.valueOf(templateposition.childPosition));
-        }
     }
 }

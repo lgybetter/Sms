@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Window;
 
 import com.lgybetter.smsproject.R;
@@ -29,7 +28,6 @@ public class Application_FirstRunActivity extends Activity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 Intent activity;
                 if (isFirstRun) {
-                    Log.d("debug", "第一次运行");
                     editor.putBoolean("isFirstRun", false);
                     editor.commit();
                     activity = new Intent(Application_FirstRunActivity.this, GuideActivity.class);

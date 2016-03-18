@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -26,7 +25,6 @@ import service.LoadMessageData;
  */
 public class GuideActivity extends Activity {
     Button start;
-    private ViewPager guideViewPager;
 
     private int [] guidePhotos = new int[]{
         R.drawable.viewpager1,R.drawable.viewpager2,R.drawable.viewpager3
@@ -43,16 +41,13 @@ public class GuideActivity extends Activity {
         start = (Button)findViewById(R.id.start);
         //添加动画
 //        guideViewPager.setPageTransformer(true,new DepthPageTransformer());
-        guideViewPager = (ViewPager)findViewById(R.id.viewpager);
+        ViewPager guideViewPager = (ViewPager) findViewById(R.id.viewpager);
         guideViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if(position == 2)
-                {
+                if (position == 2) {
                     start.setVisibility(View.VISIBLE);
-                }
-                else
-                {
+                } else {
                     start.setVisibility(View.GONE);
                 }
             }
@@ -82,15 +77,16 @@ public class GuideActivity extends Activity {
             public Object instantiateItem(ViewGroup container, int position) {
                 ImageView imageView = new ImageView(getApplicationContext());
                 InputStream is = getApplicationContext().getResources().openRawResource(guidePhotos[position]);
-                BitmapFactory.Options options=new BitmapFactory.Options();
+                BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = false;
-                Bitmap btp =BitmapFactory.decodeStream(is,null,options);
+                Bitmap btp = BitmapFactory.decodeStream(is, null, options);
                 imageView.setImageBitmap(btp);
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 container.addView(imageView);
                 guidePhotoList.add(imageView);
                 return imageView;
             }
+
             @Override
             public void destroyItem(ViewGroup container, int position, Object object) {
                 container.removeView(guidePhotoList.get(position));
@@ -101,10 +97,8 @@ public class GuideActivity extends Activity {
         * */
         final Intent intent = new Intent(GuideActivity.this, LoadAddressBookData.class);
         startService(intent);
-        Log.d("debug", "第一次运行创建联系人数据库完成");
         Intent intent1 = new Intent(GuideActivity.this, LoadMessageData.class);
         startService(intent1);
-        Log.d("debug", "第一次运行创建短信数据库完成");
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

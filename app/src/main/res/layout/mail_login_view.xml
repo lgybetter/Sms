@@ -3,6 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@drawable/mail_login_background"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/title_bar"
+        android:background="#292929"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/retrun"
+            android:id="@+id/bt_return"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:layout_weight="1"
+            android:textColor="#56abe4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="邮箱登录"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:visibility="invisible"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
     <EditText
         android:id="@+id/et_mail_account"
         android:background="@drawable/mail_login_et_background"

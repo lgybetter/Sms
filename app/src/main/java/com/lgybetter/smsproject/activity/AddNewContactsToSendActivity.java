@@ -38,21 +38,10 @@ public class AddNewContactsToSendActivity extends Activity {
     private SelectContactsAdapter adapter;
 
     /**
-     * 用于进行字母表分组
-     */
-    private AlphabetIndexer indexer;
-
-    /**
      * 存储所有手机中的联系人
      */
     private List<Person> contacts = new ArrayList<Person>();
 
-    /**
-     * 定义字母表的排序规则
-     */
-    private String alphabet = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    //private List<Map<String,String>> listItems;
-    private Button No , Yes;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -60,8 +49,8 @@ public class AddNewContactsToSendActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.add_new_contacts_to_send_view);
         contactsListView = (ListView)findViewById(R.id.add_contacts_sms_list);
-        No = (Button)findViewById(R.id.bt_no_select);
-        Yes = (Button)findViewById(R.id.bt_yes_select);
+        Button no = (Button) findViewById(R.id.bt_no_select);
+        Button yes = (Button) findViewById(R.id.bt_yes_select);
         name_return = "";
         number_return = "";
         id_return = "";
@@ -81,35 +70,40 @@ public class AddNewContactsToSendActivity extends Activity {
             } while (cursor.moveToNext());
         }
         startManagingCursor(cursor);
-        indexer = new AlphabetIndexer(cursor, cursor.getColumnIndex("sortKey"), alphabet);
+        /*
+      定义字母表的排序规则
+     */
+        String alphabet = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        /*
+      用于进行字母表分组
+     */
+        AlphabetIndexer indexer = new AlphabetIndexer(cursor, cursor.getColumnIndex("sortKey"), alphabet);
         adapter.setIndexer(indexer);
         if (contacts.size() > 0) {
             setupContactsListView();
         }
-        Yes.setOnClickListener(new View.OnClickListener() {
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
-                for(int i = 0; i < contacts.size(); i++)
-                {
-                    if(contacts.get(i).isStatus())
-                    {
+                for (int i = 0; i < contacts.size(); i++) {
+                    if (contacts.get(i).isStatus()) {
                         name_return = name_return + contacts.get(i).getName() + ";";
                         number_return = number_return + contacts.get(i).getNumber() + ";";
                         id_return = id_return + contacts.get(i).getID() + ";";
                     }
                 }
-                AddContactsReturnData returnData = new AddContactsReturnData(name_return,number_return,id_return);
+                AddContactsReturnData returnData = new AddContactsReturnData(name_return, number_return, id_return);
                 data.putExtra("result", returnData);
                 setResult(30, data);
                 finish();
             }
         });
-        No.setOnClickListener(new View.OnClickListener() {
+        no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
-                AddContactsReturnData returnData = new AddContactsReturnData(name_return,number_return,id_return);
+                AddContactsReturnData returnData = new AddContactsReturnData(name_return, number_return, id_return);
                 data.putExtra("result", returnData);
                 setResult(40, data);
                 finish();

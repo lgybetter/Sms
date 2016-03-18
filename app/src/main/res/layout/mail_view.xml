@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout android:orientation="horizontal" android:layout_width="match_parent"
         android:background="#292929"
+        android:id="@+id/title_bar"
         android:layout_height="50dp">
         <Button
             android:background="@drawable/setting"
@@ -35,8 +36,20 @@
 
     </LinearLayout>
     <ListView
+        android:visibility="invisible"
+        android:layout_below="@+id/title_bar"
         android:id="@+id/mail_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
-</LinearLayout>
+
+    <ProgressBar
+        android:visibility="visible"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

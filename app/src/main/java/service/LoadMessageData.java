@@ -11,7 +11,6 @@ import android.os.IBinder;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 /**
  * Created by Administrator on 2016/2/14.
@@ -55,22 +54,13 @@ public class LoadMessageData extends Service{
         if (cursor.moveToFirst()) {
             do {
                 ContentValues contentValues = new ContentValues();
-                //Log.i("info","----------------------------------------");
                 contentValues.put("message_id", cursor.getInt(0));
-                //Log.i("info", String.valueOf(cursor.getInt(0)));
                 contentValues.put("person_phoneNum", cursor.getString(1));
-                //Log.i("info", cursor.getString(1));
                 contentValues.put("contact_Id", cursor.getInt(2));
-                //Log.i("info", String.valueOf(cursor.getInt(2)));
                 contentValues.put("message_body", cursor.getString(3));
-                //Log.i("info", cursor.getString(3));
                 contentValues.put("date", cursor.getString(4));
-                Log.i("info", cursor.getString(4));
                 contentValues.put("type", cursor.getInt(5));
-                //Log.i("info", String.valueOf(cursor.getInt(5)));
                 contentValues.put("read", cursor.getInt(6));
-                //Log.i("info", String.valueOf(cursor.getInt(6)));
-                //Log.i("info","----------------------------------------");
                 String person_name = getPeopleNameFromPerson(cursor.getString(1));
                 if(person_name == "null")
                     contentValues.put("person_name","陌生人");

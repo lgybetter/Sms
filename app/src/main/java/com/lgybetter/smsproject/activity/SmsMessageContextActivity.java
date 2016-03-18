@@ -93,7 +93,6 @@ public class SmsMessageContextActivity extends Activity {
                     String message_text = WritteSms.getText().toString();
                     SmsManager smsManager = SmsManager.getDefault();
 //                    smsManager.sendTextMessage(message.getPerson_number(), null,message_text, null, null);
-//                    Log.i("info","发送号码为：" + message.getPerson_number() + " 发送的内容为：" + message_text);
                     ContentValues contentValues = new ContentValues();
                     ContentValues contentValues1 = new ContentValues();
                     contentValues1.put("date", String.valueOf(System.currentTimeMillis()));

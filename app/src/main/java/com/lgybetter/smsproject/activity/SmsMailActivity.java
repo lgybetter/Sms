@@ -3,17 +3,22 @@ package com.lgybetter.smsproject.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.SimpleAdapter;
 
 import com.lgybetter.smsproject.R;
 import com.util.mail.Email;
 import com.util.mail.MailDBHelper;
 import com.util.mail.MailProject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import beanclass.MailUser;
@@ -22,82 +27,51 @@ import beanclass.MailUser;
  * Created by Administrator on 2015/12/7.
  */
 public class SmsMailActivity extends Activity {
-    List<Email> emailList;
-    int  nowemail,emailn;
+    private List<Email> emails;
+    private List<HashMap<String,Object>> emails_items;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.mail_load_view);
+        setContentView(R.layout.mail_view);
+        emails = new ArrayList<>();
+        emails_items = new ArrayList<>();
+        ListView listView = (ListView) findViewById(R.id.mail_list);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         MailDBHelper mailDBHelper = new MailDBHelper(getApplicationContext());
         MailUser mailUser = mailDBHelper.getUser();
-        Intent intent;
         if(mailUser != null) {
-            intent = new Intent(getApplicationContext(),SmsMailListActivity.class);
+            progressBar.setVisibility(View.INVISIBLE);
+            listView.setVisibility(View.VISIBLE);
+            MailProject mp = new MailProject(getApplicationContext());
+            emails = mp.getList();
+            SimpleAdapter simpleAdapter = new SimpleAdapter(this,getMailData(),R.layout.mail_list_item,new String[]{"address","subject","title","date"},new int[]{R.id.mail_address,R.id.mail_subject,R.id.mail_title,R.id.mail_date});
+            listView.setAdapter(simpleAdapter);
         }else {
-            intent = new Intent(getApplicationContext(),SmsMailLoginAcitivty.class);
+            progressBar.setVisibility(View.INVISIBLE);
+            Intent intent = new Intent(getApplicationContext(), SmsMailLoginAcitivty.class);
+            startActivity(intent);
         }
-        SmsMailActivity.this.startActivity(intent);
-        SmsMailActivity.this.finish();
-
-//        Button bt=(Button)findViewById(R.id.button);
-//        Button bt2 = (Button)findViewById(R.id.button2);
-//        Button bt3 = (Button)findViewById(R.id.button3);
-//        Button bt4 = (Button)findViewById(R.id.button4);
-//        bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MailProject mp=new MailProject(getApplicationContext());
-//                mp.setUser("15521132074@163.com", "lgy6695464");
-//                mp.sendMail("1007942185@qq.com","龙腾oba","快点找到腾嫂");
-//                mp.setListFlashListener(new MailProject.OnListFlashListener() {
-//                    @Override
-//                    public void onFlash(List<Email> emails) {
-//                        for(int i = 0; i < emails.size(); i ++)
-//                        {
-//                            Log.i("info", emails.get(i).getAddresser());
-//                            Log.i("info",emails.get(i).getDate());
-//                            Log.i("info",emails.get(i).getSubject());
-//                            Log.i("info",emails.get(i).getText());
-//                            Log.i("info",emails.get(i).getUid());
-//                        }
-//                        emailList.addAll(emails);
-//                        emailn=emailList.size();
-//                    }
-//                });
-//                emailList=mp.getList();
-//                emailn=emailList.size();
-//            }
-//        });
-//
-//        bt2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                nowemail = Math.max(0, nowemail - 1);
-//                WebView wv = (WebView) findViewById(R.id.webView);
-//                wv.getSettings().setDefaultTextEncodingName("utf-8");
-//                wv.loadData(emailList.get(nowemail).getText(), "text/html;charset=UTF-8", null);
-//            }
-//        });
-//
-//        bt3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                nowemail = Math.min(emailn - 1, nowemail + 1);
-//                WebView wv = (WebView) findViewById(R.id.webView);
-//                wv.getSettings().setDefaultTextEncodingName("utf-8");
-//                wv.loadData(emailList.get(nowemail).getText(), "text/html;charset=UTF-8", null);
-//            }
-//        });
-//
-//        bt4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MailProject mp = new MailProject(getApplicationContext());
-//                emailList = mp.search("您好");
-//                emailn = emailList.size();
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),SmsMailContentActivity.class);
+                intent.putExtra("mail_text",emails.get(position).getText());
+                startActivity(intent);
+            }
+        });
+    }
+    List<HashMap<String,Object>> getMailData() {
+        for(int i = 0; i < emails.size(); i ++)
+        {
+            HashMap<String, Object> m = new HashMap<>();
+            m.put("address",emails.get(i).getAddresser());
+            m.put("subject",emails.get(i).getSubject());
+            m.put("title",emails.get(i).getUid());
+            m.put("date",emails.get(i).getDate());
+            emails_items.add(m);
+        }
+        return emails_items;
     }
 }
 

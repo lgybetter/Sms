@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -66,14 +65,12 @@ public class SmsMessageActivity extends Activity {
         Map<String , Object> m;
         final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         Cursor cursor = db.query("messagetb", null, "_id>?", new String[]{"0"}, null, null, "date desc");
-        if (cursor.moveToFirst())
-        {
+        if (cursor.moveToFirst()) {
             //db.execSQL("create table if not exists messagetb(_id integer primary key autoincrement,person_name text not null,contact_Id integer not null,message_id integer not null,message_body text not null,person_phoneNum text not null,date text not null,type integer not null,read integer not null)");
             //public Message(int ID,int message_id,int person_number,int person_id,String message_body,String message_date,int message_type,int message_read,String person_name)
             do {
                 String person_number = cursor.getString(cursor.getColumnIndex("person_phoneNum"));
-                if(!number_exit(person_number))
-                {
+                if(!number_exit(person_number)) {
                     int ID = cursor.getInt(cursor.getColumnIndex("_id"));
                     int message_id = cursor.getInt(cursor.getColumnIndex("message_id"));
                     int person_id = cursor.getInt(cursor.getColumnIndex("contact_Id"));
@@ -100,13 +97,9 @@ public class SmsMessageActivity extends Activity {
         return listItems;
     }
 
-    private boolean number_exit(String number)
-    {
-        for(int i = 0; i < messagesList.size(); i++)
-        {
-            if(number.equals(messagesList.get(i).getPerson_number()))
-            {
-                System.out.println(number + "存在等于" + messagesList.get(i).getPerson_number());
+    private boolean number_exit(String number) {
+        for(int i = 0; i < messagesList.size(); i++) {
+            if(number.equals(messagesList.get(i).getPerson_number())) {
                 return true;
             }
         }
@@ -116,36 +109,25 @@ public class SmsMessageActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        Message messageResult = (Message)data.getSerializableExtra("context_result");
-//        Log.i("info",messageResult.getPerson_number());
         getResult(data);
     }
-    /** AddContactsReturnData returnContactsData = (AddContactsReturnData) data.getSerializableExtra("result");
-     if(returnContactsData != null)
-     {
-
-     }
-     * */
     private void getResult(Intent data) {
         Message messageResult = (Message)data.getSerializableExtra("context_result");
-        if(messageResult != null)
-        {
-            Log.i("info",messageResult.getPerson_number());
+        if(messageResult != null) {
             int index = getListIndex(messageResult.getPerson_number());
             HashMap<String , Object> m = new HashMap<>();
             m.put("name",messageResult.getPerson_name());
             m.put("phonenumber",messageResult.getPerson_number());
             m.put("body",messageResult.getMessage_body());
             m.put("date",messageResult.getMessage_date());
-            if(index != -1)
-            {
+            if(index != -1) {
                 listItems.remove(index);
                 messagesList.remove(index);
                 listItems.add(0, m);
                 messagesList.add(0, messageResult);
                 simpleAdapter.notifyDataSetChanged();
             }
-            else
-            {
+            else {
                 listItems.add(0,m);
                 messagesList.add(0,messageResult);
                 simpleAdapter.notifyDataSetChanged();
@@ -153,13 +135,9 @@ public class SmsMessageActivity extends Activity {
         }
     }
 
-    private int getListIndex(String number)
-    {
-        for(int i = 0; i < messagesList.size(); i++)
-        {
-            if(number.equals(messagesList.get(i).getPerson_number()))
-            {
-                System.out.println(number + "存在等于" + messagesList.get(i).getPerson_number());
+    private int getListIndex(String number) {
+        for(int i = 0; i < messagesList.size(); i++) {
+            if(number.equals(messagesList.get(i).getPerson_number())) {
                 return i;
             }
         }

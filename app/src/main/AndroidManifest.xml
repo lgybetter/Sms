@@ -54,8 +54,9 @@
         </activity>
         <activity android:name=".activity.SmsMailLoginAcitivty">
         </activity>
-        <activity android:name=".activity.SmsMailListActivity">
+        <activity android:name=".activity.SmsMailContentActivity">
         </activity>
+
         <service android:name="service.LoadAddressBookData">
         </service>
         <service android:name="service.LoadMessageData">

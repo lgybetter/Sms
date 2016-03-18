@@ -3,7 +3,6 @@ package com.lgybetter.smsproject.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -49,7 +48,6 @@ public class SmsEditAddressBookActivity extends Activity {
                     Toast.makeText(SmsEditAddressBookActivity.this,"请输入所要编辑的信息",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Log.i("info","成功修改");
 //                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
 //                    String name = et_name.getText().toString();
 //                    String[] pinyin = PinyinHelper.toHanyuPinyinStringArray('刘');
