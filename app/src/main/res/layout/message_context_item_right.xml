@@ -3,9 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_gravity="left"
+        android:gravity="right"
+        android:layout_gravity="right"
         android:id="@+id/ly_message_context"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="16dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -26,6 +27,7 @@
             android:id="@+id/message_body"
             android:layout_marginLeft="10dp"
             android:textSize="16sp"
+            android:textColor="@color/black"
             android:layout_marginRight="10dp"
             android:text="卡顿,死机-驱动之家"
             android:layout_width="wrap_content"

@@ -24,6 +24,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import adapter.MessageContentAdapter;
 import beanclass.Message;
 
 
@@ -31,26 +33,24 @@ import beanclass.Message;
  * Created by Administrator on 2015/12/9.
  */
 public class SmsMessageContextActivity extends Activity {
-    private List<Map<String,Object>> listItems;
-    private List<Message>Message_List;
-    private SimpleAdapter simpleAdapter;
+
+    private List<Message>Message_List = new ArrayList<>();
     private ListView listView;
     private EditText WritteSms;
     private Button SendSms;
     private Message message_add = null;
     private Button returnButton;
+    private MessageContentAdapter adapter;
     @Override
     protected void onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.message_context_view);
-        listView = (ListView)findViewById(R.id.message_context);
+        listView = (ListView) findViewById(R.id.message_context);
         WritteSms = (EditText)findViewById(R.id.et_write_message);
         SendSms = (Button)findViewById(R.id.bt_send_message);
         returnButton = (Button)findViewById(R.id.bt_return);
-        listItems = new ArrayList<>();
-        Message_List = new ArrayList<>();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final Message message = (Message)bundle.getSerializable("message_data");
@@ -74,14 +74,10 @@ public class SmsMessageContextActivity extends Activity {
                 String person_name = cursor.getString(cursor.getColumnIndex("person_name"));
                 Message message_item = new Message(ID,message_id,person_number,person_id,message_body,message_date,message_type,message_read,person_name);
                 Message_List.add(message_item);
-                Map<String,Object>m = new HashMap<>();
-                m.put("date",message_date);
-                m.put("body",message_body);
-                listItems.add(m);
             }while(cursor.moveToNext());
         }
-        simpleAdapter = new SimpleAdapter(this,listItems,R.layout.message_context_item,new String[]{"date","body"},new int[]{R.id.message_date,R.id.message_body});
-        listView.setAdapter(simpleAdapter);
+        adapter = new MessageContentAdapter(getApplicationContext(),Message_List);
+        listView.setAdapter(adapter);
         SendSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,13 +111,10 @@ public class SmsMessageContextActivity extends Activity {
                     db.insert("messagetb", null, contentValues);
                     contentValues.clear();
                     contentValues1.clear();
-                    Map<String, Object> m = new HashMap<>();
-                    m.put("date", message_date);
-                    m.put("body", message_text);
-                    listItems.add(0, m);
-                    simpleAdapter.notifyDataSetChanged();
 //public Message(int ID,int message_id,String person_number,int person_id,String message_body,String message_date,int message_type,int message_read,String person_name)
                     message_add = new Message(0, 0, message.getPerson_number(), message.getPerson_id(), message_text, message_date, 2, 1, message.getPerson_name());
+                    Message_List.add(0,message_add);
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(SmsMessageContextActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
                     WritteSms.setText("");
 //                    AddContactsReturnData returnData = new AddContactsReturnData(name_return,number_return,id_return);
