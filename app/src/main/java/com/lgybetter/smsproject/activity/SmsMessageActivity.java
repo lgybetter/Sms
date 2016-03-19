@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import beanclass.AddMessageListReturn;
 import beanclass.Message;
 
 /**
@@ -55,8 +56,8 @@ public class SmsMessageActivity extends Activity {
         addSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext() , SmsAddNewMessageActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), SmsAddNewMessageActivity.class);
+                startActivityForResult(intent, 200);
             }
         });
     }
@@ -113,6 +114,7 @@ public class SmsMessageActivity extends Activity {
     }
     private void getResult(Intent data) {
         Message messageResult = (Message)data.getSerializableExtra("context_result");
+        AddMessageListReturn addMessageListReturn = (AddMessageListReturn) data.getSerializableExtra("return_message_list");
         if(messageResult != null) {
             int index = getListIndex(messageResult.getPerson_number());
             HashMap<String , Object> m = new HashMap<>();
@@ -131,6 +133,30 @@ public class SmsMessageActivity extends Activity {
                 listItems.add(0,m);
                 messagesList.add(0,messageResult);
                 simpleAdapter.notifyDataSetChanged();
+            }
+        }
+        if(addMessageListReturn != null) {
+            List<Message> list = addMessageListReturn.getList();
+            for(int i = 0; i < list.size(); i ++)
+            {
+                int index = getListIndex(list.get(i).getPerson_number());
+                HashMap<String , Object> m = new HashMap<>();
+                m.put("name",list.get(i).getPerson_name());
+                m.put("phonenumber",list.get(i).getPerson_number());
+                m.put("body",list.get(i).getMessage_body());
+                m.put("date",list.get(i).getMessage_date());
+                if(index != -1) {
+                    listItems.remove(index);
+                    messagesList.remove(index);
+                    listItems.add(0, m);
+                    messagesList.add(0, list.get(i));
+                    simpleAdapter.notifyDataSetChanged();
+                }
+                else {
+                    listItems.add(0,m);
+                    messagesList.add(0,list.get(i));
+                    simpleAdapter.notifyDataSetChanged();
+                }
             }
         }
     }

@@ -7,22 +7,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.text.Layout;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lgybetter.smsproject.R;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import beanclass.AddContactsReturnData;
+import beanclass.AddMessageListReturn;
+import beanclass.Message;
 import beanclass.TemplatePosition;
 
 /**
@@ -37,6 +38,7 @@ public class SmsAddNewMessageActivity extends Activity {
     private Button returnButton;
     private String name;
     private String number;
+    private AddMessageListReturn addMessageListReturn = null;
     private String [][][] template = new String[][][]{
             /**
              * 商务工作
@@ -86,11 +88,12 @@ public class SmsAddNewMessageActivity extends Activity {
                 }
                 else
                 {
-                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
+                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db", MODE_PRIVATE, null);
                     String message_text = et_WriteMessage.getText().toString();
                     SmsManager smsManager = SmsManager.getDefault();
                     String[] name_array = name.split(";");
                     String[] number_array = number.split(";");
+                    addMessageListReturn = new AddMessageListReturn();
                     for(int i=0; i<number_array.length; i++){
                         String text = "你好" + name_array[i] + message_text;
 //                        smsManager.sendTextMessage(number_array[i], null, text, null, null);
@@ -100,8 +103,8 @@ public class SmsAddNewMessageActivity extends Activity {
                         contentValues1.put("read",1);
                         contentValues1.put("type",2);
                         contentValues1.put("address",number_array[i]);
-                        contentValues1.put("body",text);
-                        getContentResolver().insert(Uri.parse("content://sms"),contentValues1);
+                        contentValues1.put("body", text);
+                        getContentResolver().insert(Uri.parse("content://sms"), contentValues1);
                         contentValues.put("person_phoneNum", number_array[i]);
                         contentValues.put("person_name", name_array[i]);
                         contentValues.put("date", String.valueOf(System.currentTimeMillis()));
@@ -109,12 +112,20 @@ public class SmsAddNewMessageActivity extends Activity {
                         contentValues.put("type", 2);
                         contentValues.put("read", 1);
                         contentValues.put("contact_Id",0);
-                        contentValues.put("message_id",0);
+                        contentValues.put("message_id", 0);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date = new Date(Long.parseLong(String.valueOf(System.currentTimeMillis())));
+                        String message_date = dateFormat.format(date);
+                        Message message = new Message(0,0,number_array[i],0,text,message_date,2,1,name_array[i]);
+                        addMessageListReturn.addMessage(message);
                         db.insert("messagetb", null, contentValues);
                         contentValues.clear();
                         contentValues1.clear();
                     }
                     db.close();
+                    Intent data = new Intent();
+                    data.putExtra("return_message_list", addMessageListReturn);
+                    setResult(60, data);
                     Toast.makeText(SmsAddNewMessageActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
                     et_AddContacts.setText("");
                     et_WriteMessage.setText("");
@@ -131,6 +142,9 @@ public class SmsAddNewMessageActivity extends Activity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent data = new Intent();
+                data.putExtra("return_message_list",addMessageListReturn);
+                setResult(60,data);
                 finish();
             }
         });
@@ -166,5 +180,17 @@ public class SmsAddNewMessageActivity extends Activity {
 
     public void setTemplateReturn(Intent data) {
         TemplatePosition templateposition = (TemplatePosition)data.getSerializableExtra("template_result");
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0){
+            Intent data = new Intent();
+            data.putExtra("return_message_list", addMessageListReturn);
+            setResult(60, data);
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
