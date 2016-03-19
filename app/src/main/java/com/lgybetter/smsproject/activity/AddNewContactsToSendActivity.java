@@ -19,6 +19,7 @@ import java.util.List;
 import adapter.SelectContactsAdapter;
 import beanclass.AddContactsReturnData;
 import beanclass.Person;
+import mywidget.IndexableListView;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -30,7 +31,7 @@ public class AddNewContactsToSendActivity extends Activity {
     /**
      * 联系人ListView
      */
-    private ListView contactsListView;
+    private IndexableListView contactsListView;
 
     /**
      * 联系人列表适配器
@@ -40,7 +41,7 @@ public class AddNewContactsToSendActivity extends Activity {
     /**
      * 存储所有手机中的联系人
      */
-    private List<Person> contacts = new ArrayList<Person>();
+    private List<Person> contacts = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,7 +49,7 @@ public class AddNewContactsToSendActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.add_new_contacts_to_send_view);
-        contactsListView = (ListView)findViewById(R.id.add_contacts_sms_list);
+        contactsListView = (IndexableListView)findViewById(R.id.add_contacts_sms_list);
         Button no = (Button) findViewById(R.id.bt_no_select);
         Button yes = (Button) findViewById(R.id.bt_yes_select);
         name_return = "";
@@ -112,6 +113,7 @@ public class AddNewContactsToSendActivity extends Activity {
     }
     private void setupContactsListView() {
         contactsListView.setAdapter(adapter);
+        contactsListView.setFastScrollEnabled(true);
     }
 
     /**

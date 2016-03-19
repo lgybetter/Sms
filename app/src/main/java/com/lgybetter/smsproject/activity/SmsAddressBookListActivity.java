@@ -18,6 +18,7 @@ import java.util.List;
 
 import adapter.PersonAdapter;
 import beanclass.Person;
+import mywidget.IndexableListView;
 
 
 /**
@@ -28,7 +29,7 @@ public class SmsAddressBookListActivity extends Activity {
     /**
      * 联系人ListView
      */
-    private ListView contactsListView;
+    private IndexableListView contactsListView;
 
     /**
      * 联系人列表适配器
@@ -43,7 +44,7 @@ public class SmsAddressBookListActivity extends Activity {
     /**
      * 存储所有手机中的联系人
      */
-    private List<Person> contacts = new ArrayList<Person>();
+    private List<Person> contacts = new ArrayList<>();
 
     /**
      * 定义字母表的排序规则
@@ -58,7 +59,7 @@ public class SmsAddressBookListActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.address_book_list_view);
         adapter = new PersonAdapter(this, R.layout.contact_item, contacts);
-        contactsListView = (ListView) findViewById(R.id.contacts_list_view);
+        contactsListView = (IndexableListView) findViewById(R.id.contacts_list_view);
         final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
         Cursor cursor = db.query("persontb", null, "_id>?", new String[]{"0"}, null, null, "_id");
         if (cursor.moveToFirst())
@@ -83,6 +84,7 @@ public class SmsAddressBookListActivity extends Activity {
 
     private void setupContactsListView() {
         contactsListView.setAdapter(adapter);
+        contactsListView.setFastScrollEnabled(true);
         contactsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
