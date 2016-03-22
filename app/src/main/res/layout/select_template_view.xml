@@ -2,7 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:background="#292929"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/retrun"
+            android:id="@+id/bt_return"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:layout_weight="1"
+            android:textColor="#56abe4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="模版选择"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:visibility="invisible"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
     <ExpandableListView
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:id="@+id/expandablelist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 
 import com.lgybetter.smsproject.R;
@@ -23,6 +24,7 @@ public class SelectTemplateActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.select_template_view);
+        Button bt_return = (Button) findViewById(R.id.bt_return);
         TemplateAdapter adapter = new TemplateAdapter(getApplicationContext());
         ExpandableListView expandListView = (ExpandableListView) findViewById(R.id.expandablelist);
         expandListView.setAdapter(adapter);
@@ -30,11 +32,21 @@ public class SelectTemplateActivity extends Activity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent data = new Intent();
-                TemplatePosition templatePosition = new TemplatePosition(groupPosition,childPosition);
+                TemplatePosition templatePosition = new TemplatePosition(groupPosition, childPosition);
                 data.putExtra("template_result", templatePosition);
                 setResult(40, data);
                 finish();
                 return true;
+            }
+        });
+        bt_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent data = new Intent();
+                TemplatePosition templatePosition = null;
+                data.putExtra("result", templatePosition);
+                setResult(40, data);
+                finish();
             }
         });
     }

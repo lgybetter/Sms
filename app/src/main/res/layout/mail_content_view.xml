@@ -19,7 +19,7 @@
             android:textColor="#56abe4"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="短信空间"
+            android:text="我的邮件"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
         <Button

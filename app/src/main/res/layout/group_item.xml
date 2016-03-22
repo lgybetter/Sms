@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_marginTop="8dp"
@@ -20,24 +21,37 @@
             android:textColor="@color/white"
             android:layout_weight="3.5" />
 
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_weight="1">
             <TextView
-                android:layout_marginLeft="25dp"
                 android:gravity="center_vertical"
+                android:layout_marginLeft="25dp"
                 android:text="陈浩南,陈凯兵,张润锋..."
                 android:ellipsize="end"
                 android:maxEms="9"
-                android:textColor="@color/black"
+                android:textColor="@color/mybluestyle"
                 android:singleLine="true"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="3.0"
-                android:id="@+id/number"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/tv_group_name"/>
+            <TextView
+                android:id="@+id/tv_count_number"
+                android:background="@drawable/radius_shape"
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+
+                android:text="2"
+                android:textColor="@color/mybluestyle"
+                android:gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
         <Button
+            android:id="@+id/bt_send_mail"
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"
             android:layout_width="35dp"

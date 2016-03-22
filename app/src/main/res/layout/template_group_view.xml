@@ -6,8 +6,9 @@
         android:id="@+id/tv_group_template"
         android:layout_width="match_parent"
         android:text="商务模版"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        android:background="@color/powderblue"
+        android:background="@color/mybluestyle"
         android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp" />
 </LinearLayout>

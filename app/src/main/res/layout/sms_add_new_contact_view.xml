@@ -8,7 +8,8 @@
         android:id="@+id/title_bar"
         android:layout_height="50dp">
         <Button
-            android:background="@drawable/setting"
+            android:id="@+id/bt_return"
+            android:background="@drawable/retrun"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.5"
@@ -16,7 +17,7 @@
             android:layout_height="35dp"/>
 
         <TextView
-            android:text="联系人"
+            android:text="新建联系人"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#56abe4"
@@ -30,54 +31,25 @@
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"
             android:layout_width="35dp"
-            android:background="@drawable/add"
+            android:visibility="invisible"
             android:layout_height="35dp"
             android:layout_weight="0.5"/>
 
     </LinearLayout>
     <LinearLayout
         android:background="#727272"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_marginRight="25dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginLeft="25dp"
             android:background="@color/white"
             android:src="@drawable/person_icon"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:id="@+id/imageView" />
-        <LinearLayout
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="@color/mybluestyle"
-                android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:background="@color/white"
-                android:id="@+id/tv_name"
-                android:text="姓名"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent" />
-            <TextView
-                android:textColor="@color/mybluestyle"
-                android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:background="@color/white"
-                android:id="@+id/tv_number"
-                android:text="电话"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -166,8 +138,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:textColor="@color/mybluestyle"
-        android:id="@+id/edit_data"
-        android:text="确认修改"
+        android:id="@+id/add_data"
+        android:text="添加"
         android:layout_width="200dp"
         android:layout_height="40dp" />
 </LinearLayout>

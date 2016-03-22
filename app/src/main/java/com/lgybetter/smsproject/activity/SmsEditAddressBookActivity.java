@@ -51,6 +51,7 @@ public class SmsEditAddressBookActivity extends Activity {
 //                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
 //                    String name = et_name.getText().toString();
 //                    String[] pinyin = PinyinHelper.toHanyuPinyinStringArray('刘');
+                    Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_LONG).show();
                 }
             }
         });

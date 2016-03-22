@@ -34,6 +34,7 @@ public class SmsMailActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.mail_view);
+        Button bt_send_mail = (Button)findViewById(R.id.bt_send_mail);
         emails = new ArrayList<>();
         emails_items = new ArrayList<>();
         ListView listView = (ListView) findViewById(R.id.mail_list);
@@ -57,6 +58,13 @@ public class SmsMailActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),SmsMailContentActivity.class);
                 intent.putExtra("mail_text",emails.get(position).getText());
+                startActivity(intent);
+            }
+        });
+        bt_send_mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SmsSendMailActivity.class);
                 startActivity(intent);
             }
         });

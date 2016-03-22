@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="#292929"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/cancle"
+            android:id="@+id/cancel_action"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <TextView
+            android:layout_weight="1"
+            android:textColor="#56abe4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="写邮件"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <Button
+            android:layout_marginRight="10dp"
+            android:background="@drawable/sendmail"
+            android:id="@+id/bt_send_mail"
+            android:gravity="center"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="40dp">
+            <TextView
+                android:text="收件人:"
+                android:textColor="@color/mybluestyle"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <EditText
+                android:id="@+id/et_send_mail_address"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="主题："
+                android:textColor="@color/mybluestyle"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <EditText
+                android:id="@+id/et_send_mail_subject"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <EditText
+            android:id="@+id/et_send_mail_text"
+            android:gravity="top"
+            android:hint="请输入发送内容"
+            android:padding="16dp"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/mybluestyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>
