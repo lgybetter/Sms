@@ -20,7 +20,7 @@ import beanclass.Person;
 public class SmsEditAddressBookActivity extends Activity {
     private EditText et_name , et_number;
     private TextView tv_name , tv_number;
-    private Button edit_data;
+    private Button edit_data , bt_return;
     private int ID;
 
     @Override
@@ -34,6 +34,7 @@ public class SmsEditAddressBookActivity extends Activity {
         tv_name = (TextView)findViewById(R.id.tv_name);
         tv_number = (TextView)findViewById(R.id.tv_number);
         edit_data = (Button)findViewById(R.id.edit_data);
+        bt_return = (Button)findViewById(R.id.bt_return);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final Person person = (Person)bundle.getSerializable("person_data");
@@ -44,15 +45,20 @@ public class SmsEditAddressBookActivity extends Activity {
         edit_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_name.length() == 0 && et_number.length() ==0) {
-                    Toast.makeText(SmsEditAddressBookActivity.this,"请输入所要编辑的信息",Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if (et_name.length() == 0 && et_number.length() == 0) {
+                    Toast.makeText(SmsEditAddressBookActivity.this, "请输入所要编辑的信息", Toast.LENGTH_SHORT).show();
+                } else {
 //                    final SQLiteDatabase db = openOrCreateDatabase("MailUser.db",MODE_PRIVATE,null);
 //                    String name = et_name.getText().toString();
 //                    String[] pinyin = PinyinHelper.toHanyuPinyinStringArray('刘');
-                    Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        bt_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

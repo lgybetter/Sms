@@ -8,7 +8,8 @@
         android:id="@+id/title_bar"
         android:layout_height="50dp">
         <Button
-            android:background="@drawable/setting"
+            android:id="@+id/bt_return"
+            android:background="@drawable/retrun"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.5"
@@ -30,7 +31,7 @@
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"
             android:layout_width="35dp"
-            android:background="@drawable/add"
+            android:visibility="invisible"
             android:layout_height="35dp"
             android:layout_weight="0.5"/>
 

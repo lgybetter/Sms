@@ -77,64 +77,64 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_margin="3dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/et_template_1"
-                    android:text="尊敬的"
-                    android:textSize="15sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:textSize="15sp"
-                    android:text="陈主任:"
-                    android:id="@+id/et_template_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:textSize="15sp"
-                    android:text="你好,"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/et_template_3"/>
-                <EditText
-                    android:textSize="15sp"
-                    android:text="你好,"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/et_template_4"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_margin="3dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="70dp">
-                <EditText
-                    android:textSize="15sp"
-                    android:text="你好,"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/et_template_5"/>
-                <TextView
-                    android:textSize="13sp"
-                    android:hint="请在底部输入框中输入要发送的内容"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_margin="3dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:textSize="15sp"
-                    android:text="收到请回复,谢谢!"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_margin="3dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<EditText-->
+                    <!--android:id="@+id/et_template_1"-->
+                    <!--android:text="华师快递，"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<EditText-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:text="你好同学"-->
+                    <!--android:id="@+id/et_template_2"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<EditText-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:text="你有新的快递，"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/et_template_3"/>-->
+                <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="15sp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="你好,"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/et_template_4"/>&ndash;&gt;-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_margin="3dp"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="70dp">-->
+                <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="15sp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="你好,"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/et_template_5"/>&ndash;&gt;-->
+                <!--<TextView-->
+                    <!--android:textSize="13sp"-->
+                    <!--android:hint="请在底部输入框中输入要发送的内容"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_margin="3dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<EditText-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:text="请及时来领取快递。"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
         </LinearLayout>
         <LinearLayout
             android:background="@color/white"
